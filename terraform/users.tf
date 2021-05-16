@@ -8,7 +8,7 @@ resource "vault_generic_endpoint" "user_pki_all" {
   data_json = <<EOT
 {
   "password": "superSecretPassword",
-  "policies": "admin,pki-issue-all",
+  "policies": "admin,pki-issue-all"
 }
 EOT
 }
