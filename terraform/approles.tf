@@ -12,7 +12,7 @@ resource "vault_approle_auth_backend_role" "pki-issue-all" {
 
 resource "vault_approle_auth_backend_role_secret_id" "pki-issue-all" {
   backend   = vault_auth_backend.approle.path
-  role_name = vault_approle_auth_backend_role.approle.pki-issue-all
+  role_name = vault_approle_auth_backend_role.pki-issue-all.role_name
 
   # We would not normally want to hard-code a Secret ID here
   # But because we reference it in other parts of the demonstration, it makes
