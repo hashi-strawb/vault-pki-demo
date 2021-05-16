@@ -21,13 +21,17 @@ provider "vault" {}
 # out of the Provider itself
 
 data "environment_variables" "address" {
-  filter = "VAULT_ADDR"
+  filter = "VAULT_"
 }
 
 locals {
-  vault_addr = data.environment_variables.address.items["VAULT_ADDR"]
+  vault_addr      = data.environment_variables.address.items["VAULT_ADDR"]
+  vault_namespace = data.environment_variables.address.items["VAULT_NAMESPACE"]
 }
 
 output "vault_addr" {
   value = local.vault_addr
+}
+output "vault_namespace" {
+  value = local.vault_namespace
 }
