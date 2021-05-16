@@ -1,4 +1,4 @@
-## HashiCorp Cloud Platform
+# HashiCorp Cloud Platform
 
 To get you up and running with a development Vault server as easily as possible, we will use HashiCorp Cloud Platform (HCP).
 
@@ -21,7 +21,7 @@ You will then be presented with the Dashboard
 ![Screenshot of org overview](../screenshots/002_overview.png)
 
 
-## Deploy a Vault Cluster
+# Deploy a Vault Cluster
 
 In the middle of the dashboard, you will see "Get started with Vault", and a button to "Deploy Vault"
 
@@ -65,7 +65,7 @@ The cluster will now be created. This will take a few minutes, so go make yourse
 
 ![Screenshot of cluster init](../screenshots/011_cluster_initialising.png)
 
-## Welcome to Vault
+# Welcome to Vault
 
 Our Vault cluster is now available
 

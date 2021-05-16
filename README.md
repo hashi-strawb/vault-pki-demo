@@ -4,6 +4,11 @@ This repo exists as a demonstration of how to quickly set up a Vault Server, and
 
 It includes some example use-cases, and demonstrations of functionality.
 
+These instructions are aimed to get Vault up and running as quickly as possible, so you can experiment with the functionality.
+
+If you want to see how to configure things yourself, you can read [Build Your Own Certificate Authority (CA)](https://learn.hashicorp.com/tutorials/vault/pki-engine) on the [HashiCorp Learn](https://learn.hashicorp.com/) platform.
+
+
 ## Prerequisites
 
 Some examples in this repository use Docker.
@@ -22,12 +27,7 @@ These instructions will show you how to set up and configure a new Vault cluster
 TODO: Example use cases
 
 * [ ] Creating Certs with UI
-* [ ] Different rerts with different properties
+* [ ] Different certs with different properties
 * [ ] Policies grant access to different roles
-* [ ] local nginx example (https://0.0.0.0)
+* [ ] local nginx example (https://localhost) - with curl, with browser
 * [ ] nginx with Vault Agent
-
-
-# TODO
-
-* [ ] This is a template repo. How do people use that?
