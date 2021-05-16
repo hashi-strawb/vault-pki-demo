@@ -5,6 +5,10 @@ resource "vault_auth_backend" "userpass" {
 resource "vault_generic_endpoint" "user_pki_all" {
   path = "auth/userpass/users/pki_all"
 
+  depends_on = [
+    vault_auth_backend.userpass
+  ]
+
   data_json = <<EOT
 {
   "password": "superSecretPassword",
@@ -12,3 +16,5 @@ resource "vault_generic_endpoint" "user_pki_all" {
 }
 EOT
 }
+
+# TODO: User with access to fewer roles

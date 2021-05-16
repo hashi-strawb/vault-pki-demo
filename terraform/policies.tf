@@ -24,3 +24,5 @@ path "pki/inter/roles" {
 EOT
 }
 
+
+# TODO: policies for access to specific PKI roles
