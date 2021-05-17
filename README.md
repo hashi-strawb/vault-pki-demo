@@ -32,3 +32,4 @@ TODO: Example use cases
 * [ ] local nginx example (https://localhost) - with curl, with browser
 * [ ] nginx with Vault Agent
 * [ ] Revoking PKI Certs
+* [ ] Client Certs
