@@ -17,4 +17,17 @@ resource "vault_generic_endpoint" "user_pki_all" {
 EOT
 }
 
-# TODO: User with access to fewer roles
+resource "vault_generic_endpoint" "user_pki_some" {
+  path = "auth/userpass/users/pki_some"
+
+  depends_on = [
+    vault_auth_backend.userpass
+  ]
+
+  data_json = <<EOT
+{
+  "password": "superSecretPassword",
+  "policies": "admin,pki-issue-some"
+}
+EOT
+}

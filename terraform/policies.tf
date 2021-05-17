@@ -7,7 +7,7 @@ path "sys/mounts" {
   capabilities = [ "read", "list" ]
 }
 
-# Issue certificates from any CA
+# Issue certificates from any Role
 path "pki/inter/issue/+" {
   capabilities = ["update"]
 }
@@ -24,5 +24,40 @@ path "pki/inter/roles" {
 EOT
 }
 
+resource "vault_policy" "pki-issue-some" {
+  name = "pki-issue-some"
 
-# TODO: policies for access to specific PKI roles
+  policy = <<EOT
+# List enabled secret engines
+path "sys/mounts" {
+  capabilities = [ "read", "list" ]
+}
+
+# Issue certificates from some roles
+path "pki/inter/issue/test.fancycorp.io" {
+  capabilities = ["update"]
+}
+
+# Issue certificates from some roles
+path "pki/inter/issue/dev.fancycorp.io" {
+  capabilities = ["update"]
+}
+
+# Read details from some PKI Roles
+path "pki/inter/roles/test.fancycorp.io" {
+  capabilities = ["read"]
+}
+
+# Read details from some PKI Roles
+path "pki/inter/roles/dev.fancycorp.io" {
+  capabilities = ["read"]
+}
+
+# List all PKI Roles
+path "pki/inter/roles" {
+  capabilities = ["list"]
+}
+EOT
+}
+
+

@@ -31,3 +31,4 @@ TODO: Example use cases
 * [ ] Policies grant access to different roles
 * [ ] local nginx example (https://localhost) - with curl, with browser
 * [ ] nginx with Vault Agent
+* [ ] Revoking PKI Certs
