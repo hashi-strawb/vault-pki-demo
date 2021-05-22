@@ -13,8 +13,9 @@ resource "vault_pki_secret_backend_role" "localhost" {
 }
 
 resource "vault_pki_secret_backend_role" "prod" {
-  backend = vault_mount.pki_inter.path
-  name    = "prod.fancycorp.io"
+  backend         = vault_mount.pki_inter.path
+  name            = "prod.fancycorp.io"
+  allow_localhost = "false"
 
   allow_subdomains = true
   allowed_domains  = ["prod.fancycorp.io"]
@@ -25,8 +26,9 @@ resource "vault_pki_secret_backend_role" "prod" {
 }
 
 resource "vault_pki_secret_backend_role" "test" {
-  backend = vault_mount.pki_inter.path
-  name    = "test.fancycorp.io"
+  backend         = vault_mount.pki_inter.path
+  name            = "test.fancycorp.io"
+  allow_localhost = "false"
 
   allow_subdomains = true
   allowed_domains  = ["test.fancycorp.io"]
@@ -37,8 +39,9 @@ resource "vault_pki_secret_backend_role" "test" {
 }
 
 resource "vault_pki_secret_backend_role" "dev" {
-  backend = vault_mount.pki_inter.path
-  name    = "dev.fancycorp.io"
+  backend         = vault_mount.pki_inter.path
+  name            = "dev.fancycorp.io"
+  allow_localhost = "false"
 
   allow_subdomains = true
   allowed_domains  = ["dev.fancycorp.io"]
