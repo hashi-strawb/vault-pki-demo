@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cli:
+    build: .
+    working_dir: /root
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_NAMESPACE=${VAULT_NAMESPACE}
+
+
+# TODO: NGINX, with CA in correct place already.
+# Generate cert by hand and reload nginx.
+
+# TODO: NGINX with Vault Agent
