@@ -3,11 +3,12 @@ resource "vault_auth_backend" "approle" {
 }
 
 resource "vault_approle_auth_backend_role" "pki-issue-all" {
-  backend        = vault_auth_backend.approle.path
-  role_name      = "pki-issue-all"
-  token_policies = ["pki-issue-all"]
-  token_ttl      = 300
-  role_id        = "pki-issue-all"
+  backend            = vault_auth_backend.approle.path
+  role_name          = "pki-issue-all"
+  token_policies     = ["pki-issue-all"]
+  token_ttl          = 300
+  role_id            = "pki-issue-all"
+  secret_id_num_uses = 0
 }
 
 resource "vault_approle_auth_backend_role_secret_id" "pki-issue-all" {
