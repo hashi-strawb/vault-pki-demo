@@ -7,8 +7,14 @@ services:
       - VAULT_ADDR=${VAULT_ADDR}
       - VAULT_NAMESPACE=${VAULT_NAMESPACE}
 
-
-# TODO: NGINX, with CA in correct place already.
-# Generate cert by hand and reload nginx.
+  nginx:
+    build: .
+    working_dir: /root
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_NAMESPACE=${VAULT_NAMESPACE}
+      - AUTOLOGIN=true
+      - AUTO_TRUST_CA=true
+      - RUN_NGINX=true
 
 # TODO: NGINX with Vault Agent
