@@ -17,4 +17,13 @@ services:
       - AUTO_TRUST_CA=true
       - RUN_NGINX=true
 
-# TODO: NGINX with Vault Agent
+  agent:
+    build: .
+    working_dir: /root
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_NAMESPACE=${VAULT_NAMESPACE}
+      - AUTOLOGIN=true
+      - AUTO_TRUST_CA=true
+      - RUN_NGINX=true
+      - VAULT_AGENT=true

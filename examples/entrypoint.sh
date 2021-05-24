@@ -6,20 +6,30 @@ if [[ ${AUTOLOGIN} ]]; then
 fi
 
 if [[ ${AUTO_TRUST_CA} ]]; then
-	curl -s ${VAULT_ADDR}/v1/${VAULT_NAMESPACE}/pki/root/ca/pem  > /etc/ssl/certs/vault_root.pem
-	curl -s ${VAULT_ADDR}/v1/${VAULT_NAMESPACE}/pki/inter/ca/pem > /etc/ssl/certs/vault_inter.pem
-
-	echo >> /etc/ssl/certs/ca-certificates.crt
-	cat /etc/ssl/certs/vault_root.pem >> /etc/ssl/certs/ca-certificates.crt
-	echo >> /etc/ssl/certs/ca-certificates.crt
-	cat /etc/ssl/certs/vault_inter.pem >> /etc/ssl/certs/ca-certificates.crt
-
+	curl -s ${VAULT_ADDR}/v1/${VAULT_NAMESPACE}/pki/root/ca/pem  > /usr/local/share/ca-certificates/vault_root.pem
 	update-ca-certificates 2>/dev/null
 fi
 
 if [[ ${RUN_NGINX} ]]; then
 	mkdir -p /run/nginx
 	nginx
+fi
+
+if [[ ${VAULT_AGENT} ]]; then
+	mv /etc/nginx/conf.d/default.conf.ssl /etc/nginx/conf.d/default.conf
+
+	echo "pki-issue-all" > role-id.txt
+	echo "c9b3d349-c0cd-4763-863b-7babaeda82ad" > secret-id.txt
+
+	cat > split-cert.sh << EOF
+#!/bin/bash
+cat localhost.json | jq -r '.certificate, .issuing_ca' > /etc/nginx/localhost.crt
+cat localhost.json | jq -r '.private_key' > /etc/nginx/localhost.key
+
+nginx -s reload
+EOF
+
+	chmod +x split-cert.sh
 fi
 
 bash -l
