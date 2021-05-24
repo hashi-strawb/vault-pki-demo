@@ -20,7 +20,7 @@ If you do not have Docker installed, you can get it here: https://docs.docker.co
 These instructions will show you how to set up and configure a new Vault cluster
 
 1. [Setup Vault](setup/000_hcp_vault.md)
-2. [Configure Vault](setup/000_configure_vault.md)
+2. [Configure Vault](setup/001_configure_vault.md)
 
 # Examples
 
@@ -32,4 +32,3 @@ TODO: Example use cases
 * [ ] local nginx example (https://localhost) - with curl, with browser
 * [ ] nginx with Vault Agent
 * [ ] Revoking PKI Certs
-* [ ] Client Certs
