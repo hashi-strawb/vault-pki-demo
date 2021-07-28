@@ -22,6 +22,13 @@ These instructions will show you how to set up and configure a new Vault cluster
 
 # Examples
 
+This was used as part of my HashiCorp Technical Exercise.
+
+Documenting setup and examples was an afterthought, not really required as part of the exercise, but something I wanted to do for its own sake.
+
+Until it's all documented here, the presentation and demo script is here:
+https://drive.google.com/drive/folders/1Kr-qAkN7IDKZsZLsIe_tmxuzx-mINL7c?usp=sharing
+
 1. TODO: [PKI in UI](examples/100_pki_ui.md)
 2. TODO: [PKI via CLI](examples/101_pki_cli.md)
 3. TODO: [Webserver Example](examples/102_webserver.md)
