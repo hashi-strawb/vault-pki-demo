@@ -9,12 +9,19 @@ auto_auth {
 
 template {
   contents = <<EOF
-{{ with secret "pki/inter/issue/localhost" "common_name=localhost" "ttl=30" }}
-{{ toJSONPretty .Data }}
-{{ end }}
+{{ with secret "pki/inter/issue/localhost" "common_name=localhost" "ttl=30" }}{{ .Data.certificate }}
+{{ .Data.issuing_ca }}{{ end }}
 EOF
 
-  destination = "localhost.json"
+  destination = "/etc/nginx/localhost.crt"
 
-  command = "./split-cert.sh"
+  command = "nginx -s reload"
+}
+
+template {
+  contents = <<EOF
+{{ with secret "pki/inter/issue/localhost" "common_name=localhost" "ttl=30" }}{{ .Data.private_key }}{{ end }}
+EOF
+
+  destination = "/etc/nginx/localhost.key"
 }

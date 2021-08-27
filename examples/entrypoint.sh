@@ -20,16 +20,6 @@ if [[ ${VAULT_AGENT} ]]; then
 
 	echo "pki-issue-all" > role-id.txt
 	echo "c9b3d349-c0cd-4763-863b-7babaeda82ad" > secret-id.txt
-
-	cat > split-cert.sh << EOF
-#!/bin/bash
-cat localhost.json | jq -r '.certificate, .issuing_ca' > /etc/nginx/localhost.crt
-cat localhost.json | jq -r '.private_key' > /etc/nginx/localhost.key
-
-nginx -s reload
-EOF
-
-	chmod +x split-cert.sh
 fi
 
 bash -l
